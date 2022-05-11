@@ -83,9 +83,8 @@ public class JsonNodeUtil {
                 return true;
             }
 
-            ValidatorState state = (ValidatorState) CollectorContext.getInstance().get(ValidatorState.VALIDATOR_STATE_KEY);
             if(JsonType.NULL.equals(nodeType)) {
-                if(state.isComplexValidator() && parentSchema != null) {
+                if(parentSchema != null) {
                     if( parentSchema.getParentSchema() != null && JsonNodeUtil.isNodeNullable(parentSchema.getParentSchema().getSchemaNode(), config) || JsonNodeUtil.isNodeNullable(parentSchema.getSchemaNode()) ) {
                         return true;
                     }
